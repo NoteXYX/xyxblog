@@ -1,4 +1,4 @@
-package com.hfut.xyxblog.web;
+package com.hfut.xyxblog;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
