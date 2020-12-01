@@ -1,0 +1,35 @@
+spring:
+  profiles:
+    active: dev   #选dev中的配置
+server:
+  servlet:
+    context-path: /xyxblog
+
+---
+server:
+  port: 8081
+spring:
+  profiles: dev
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/xyxblog?serverTimezone=UTC&characterEncoding=utf-8&useSSL=false
+    username: root
+    password:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+mybatis:
+  type-aliases-package: com.hfut.xyxblog.dao.Entity
+  mapper-locations: classpath:mapperXML/*.xml
+  configuration:
+    map-underscore-to-camel-case: true
+
+---
+server:
+  port: 8082
+spring:
+  profiles: test
+
+---
+server:
+  port: 8088
+spring:
+  profiles: prod
