@@ -13,4 +13,7 @@ public class User {
     //密码
     private String password;
 
+    //绑定邮箱
+    private String email;
+
 }
