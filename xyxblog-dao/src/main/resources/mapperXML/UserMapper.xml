@@ -2,8 +2,14 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.hfut.xyxblog.dao.Mapper.UserMapper">
-    <select id="queryUserById" parameterType="long" resultType="com.hfut.xyxblog.dao.Entity.User">
+    <!--  根据id查询用户全部信息  -->
+    <select id="selectUserById" parameterType="long" resultType="com.hfut.xyxblog.dao.Entity.User">
         select * from `user` where id = #{id}
+    </select>
+
+    <!--  根据用户名查询用户全部信息  -->
+    <select id="selectUserByUserName" parameterType="java.lang.String" resultType="com.hfut.xyxblog.dao.Entity.User">
+        select * from `user` where user_name = #{userName}
     </select>
 
 
