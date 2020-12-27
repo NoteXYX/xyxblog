@@ -1,6 +1,5 @@
 package com.hfut.xyxblog.dao.Entity;
 
-import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 
@@ -8,7 +7,6 @@ import java.util.Date;
 
 @Data
 @Builder
-@AllArgsConstructor
 public class Blog {
     //博客主键id
     private long id;
