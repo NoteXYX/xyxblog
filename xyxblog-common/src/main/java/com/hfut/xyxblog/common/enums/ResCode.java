@@ -8,7 +8,7 @@ public enum ResCode {
     int code;
     String condition;
 
-    private ResCode(int code, String condition) {
+    ResCode(int code, String condition) {
         this.code = code;
         this.condition = condition;
     }

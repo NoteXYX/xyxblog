@@ -29,6 +29,7 @@ public class LoginController {
         userName = HtmlUtils.htmlEscape(userName);
         String password = reqUser.getPassword();
         CommonRes res = loginService.loginIn(userName, password);
+        //TODO 写入日志
         if (res.getCode() == ResCode.SUCCESS) {
             System.out.println(String.format("%s用户登录成功！", userName));
         } else {
