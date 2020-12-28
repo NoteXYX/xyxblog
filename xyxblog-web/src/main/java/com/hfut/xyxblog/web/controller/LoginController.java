@@ -19,7 +19,7 @@ public class LoginController {
     LoginService loginService;
 
     @CrossOrigin
-    @PostMapping(value = "api/login")
+    @PostMapping(value = "/login")
     @ResponseBody
     public CommonRes login(@RequestBody User reqUser) {
         // 对 html 标签进行转义，防止 XSS 攻击
