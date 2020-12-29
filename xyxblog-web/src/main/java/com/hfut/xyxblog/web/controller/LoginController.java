@@ -3,6 +3,7 @@ package com.hfut.xyxblog.web.controller;
 import com.hfut.xyxblog.common.enums.ResCode;
 import com.hfut.xyxblog.common.response.CommonRes;
 import com.hfut.xyxblog.dao.Entity.User;
+import com.hfut.xyxblog.dao.Mapper.UserMapper;
 import com.hfut.xyxblog.service.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,6 +18,9 @@ import org.springframework.web.util.HtmlUtils;
 public class LoginController {
     @Autowired
     LoginService loginService;
+
+    @Autowired
+    UserMapper userMapper;
 
     @CrossOrigin
     @PostMapping(value = "/login")
@@ -34,5 +38,11 @@ public class LoginController {
             System.out.println(res.getMessage());
         }
         return res;
+    }
+
+    @PostMapping(value = "/getUserById")
+    @ResponseBody
+    public User login(long id) {
+        return userMapper.selectUserById(id);
     }
 }
