@@ -7,10 +7,7 @@ import com.hfut.xyxblog.dao.Mapper.UserMapper;
 import com.hfut.xyxblog.service.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.HtmlUtils;
 
 
@@ -40,7 +37,7 @@ public class LoginController {
         return res;
     }
 
-    @PostMapping(value = "/getUserById")
+    @RequestMapping(value = "/getUserById")
     @ResponseBody
     public User login(long id) {
         return userMapper.selectUserById(id);
