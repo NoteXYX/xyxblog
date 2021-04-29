@@ -4,6 +4,9 @@ import com.hfut.xyxblog.common.enums.ResCode;
 import com.hfut.xyxblog.common.response.CommonRes;
 import com.hfut.xyxblog.dao.Entity.User;
 import com.hfut.xyxblog.service.LoginService;
+import com.hfut.xyxblog.service.impl.CornTestServiceImpl;
+import org.quartz.Scheduler;
+import org.quartz.SchedulerException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -12,8 +15,15 @@ import org.springframework.web.util.HtmlUtils;
 
 @Controller
 public class LoginController {
+
     @Autowired
     LoginService loginService;
+
+    @Autowired
+    CornTestServiceImpl cornTestService;
+
+    @Autowired
+    Scheduler scheduler;
 
     @CrossOrigin
     @PostMapping(value = "/login")
@@ -31,5 +41,20 @@ public class LoginController {
             System.out.println(res.getMessage());
         }
         return res;
+    }
+
+    @RequestMapping("/cornStart")
+    @ResponseBody
+    public String cornTestStart(long userId) {
+        cornTestService.addJobAndTrigger(userId);
+        scheduler = cornTestService.getScheduler();
+        return "cornStart!";
+    }
+
+    @RequestMapping("/cornStop")
+    @ResponseBody
+    public String cornTestStop(long userId) throws SchedulerException {
+        scheduler.shutdown();
+        return "cornStop!";
     }
 }
