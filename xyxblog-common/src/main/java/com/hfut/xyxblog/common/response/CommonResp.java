@@ -4,10 +4,10 @@ import com.hfut.xyxblog.common.enums.ResCode;
 import lombok.Data;
 
 @Data
-public class CommonRes {
+public class CommonResp {
     //响应代码
-    ResCode code;
+    private ResCode code;
 
     //响应信息
-    String message;
+    private String message;
 }

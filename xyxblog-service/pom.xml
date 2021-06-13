@@ -27,6 +27,13 @@
 			<artifactId>xyxblog-dao</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
+
+		<!-- pagehelper -->
+		<dependency>
+			<groupId>com.github.pagehelper</groupId>
+			<artifactId>pagehelper</artifactId>
+			<version>5.2.0</version>
+		</dependency>
 	</dependencies>
 
 </project>
