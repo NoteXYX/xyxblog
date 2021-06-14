@@ -1,6 +1,7 @@
 package com.hfut.xyxblog.common.enums;
 
 public enum ResCode {
+
     ERROR(400, "异常"),
     SUCCESS(200, "成功"),
     FAILURE(401, "失败");

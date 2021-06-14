@@ -8,6 +8,7 @@ import java.util.Date;
 @Data
 @Builder
 public class Book {
+
     //书id
     private long id;
 

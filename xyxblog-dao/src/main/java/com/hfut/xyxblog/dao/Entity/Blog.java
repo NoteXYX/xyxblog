@@ -8,6 +8,7 @@ import java.util.Date;
 @Data
 @Builder
 public class Blog {
+
     //博客主键id
     private long id;
 

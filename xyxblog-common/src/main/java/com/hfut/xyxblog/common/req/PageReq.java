@@ -4,6 +4,7 @@ import lombok.Data;
 
 @Data
 public class PageReq {
+
     //页码
     private Integer pageNum;
 

@@ -5,6 +5,7 @@ import lombok.Data;
 
 @Data
 public class CommonResp {
+
     //响应代码
     private ResCode code;
 

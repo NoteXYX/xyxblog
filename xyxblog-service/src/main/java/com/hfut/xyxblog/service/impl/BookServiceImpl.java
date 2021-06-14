@@ -9,16 +9,15 @@ import com.hfut.xyxblog.common.response.PageResp;
 import com.hfut.xyxblog.dao.Dao.BookDao;
 import com.hfut.xyxblog.dao.Entity.Book;
 import com.hfut.xyxblog.service.BookService;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Objects;
 
-@Slf4j
 @Service
 public class BookServiceImpl implements BookService {
+
     @Autowired
     private BookDao bookDao;
 
@@ -38,35 +37,69 @@ public class BookServiceImpl implements BookService {
             PageInfo<Book> pageInfo = new PageInfo<Book>(bookList);
             pageResp.setData(pageInfo.getList());
             pageResp.setTotalNum(pageInfo.getTotal());
-            int totalPageNum = (int) Math.ceil(pageInfo.getTotal() / pageInfo.getPageSize());
+            int totalPageNum = 0;
+            if (pageInfo.getPageSize() != 0) {
+                totalPageNum = (int) Math.ceil(pageInfo.getTotal() / pageInfo.getPageSize());
+            }
             pageResp.setTotalPageNum(totalPageNum);
         }
-        log.info("PageResp: " + gson.toJson(pageResp, PageResp.class));
         return pageResp;
     }
 
     @Override
     public int insertBook(Book book) {
-        return 0;
+        return bookDao.insertBook(book);
     }
 
     @Override
-    public int deleteBookByid(long id) {
-        return 0;
+    public int deleteBookById(long id) {
+        return bookDao.deleteBookByid(id);
     }
 
     @Override
     public int updateBook(Book book) {
-        return 0;
+        return bookDao.updateBook(book);
     }
 
     @Override
-    public List<Book> selectAllBooks() {
-        return null;
+    public PageResp selectAllBooks(PageReq pageReq) {
+        List<Book> bookList = Lists.newArrayList();
+        PageResp pageResp = new PageResp();
+        Integer pageNum = pageReq.getPageNum();
+        Integer pageSize = pageReq.getPageSize();
+        if (Objects.nonNull(pageNum) && Objects.nonNull(pageSize)) {
+            PageHelper.startPage(pageNum, pageSize);
+            bookList = bookDao.selectAllBooks();
+            PageInfo<Book> pageInfo = new PageInfo<Book>(bookList);
+            pageResp.setData(pageInfo.getList());
+            pageResp.setTotalNum(pageInfo.getTotal());
+            int totalPageNum = 0;
+            if (pageInfo.getPageSize() != 0) {
+                totalPageNum = (int) Math.ceil(pageInfo.getTotal() / pageInfo.getPageSize());
+            }
+            pageResp.setTotalPageNum(totalPageNum);
+        }
+        return pageResp;
     }
 
     @Override
-    public List<Book> selectBooksByTitleOrAuthor(String name) {
-        return null;
+    public PageResp selectBooksByTitleOrAuthor(PageReq pageReq, String name) {
+        List<Book> bookList = Lists.newArrayList();
+        PageResp pageResp = new PageResp();
+        Integer pageNum = pageReq.getPageNum();
+        Integer pageSize = pageReq.getPageSize();
+        if (Objects.nonNull(name) && Objects.nonNull(pageNum) && Objects.nonNull(pageSize)) {
+            PageHelper.startPage(pageNum, pageSize);
+            bookList = bookDao.selectBooksByTitleOrAuthor(name);
+            PageInfo<Book> pageInfo = new PageInfo<Book>(bookList);
+            pageResp.setData(pageInfo.getList());
+            pageResp.setTotalNum(pageInfo.getTotal());
+            int totalPageNum = 0;
+            if (pageInfo.getPageSize() != 0) {
+                totalPageNum = (int) Math.ceil(pageInfo.getTotal() / pageInfo.getPageSize());
+            }
+            pageResp.setTotalPageNum(totalPageNum);
+        }
+        return pageResp;
     }
 }

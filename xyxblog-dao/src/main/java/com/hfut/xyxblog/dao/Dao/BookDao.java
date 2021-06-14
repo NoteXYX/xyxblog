@@ -7,17 +7,18 @@ import java.util.List;
 
 @Mapper
 public interface BookDao {
+
     //根据分类号查询书籍
     List<Book> selectBooksByCid(int cid);
 
     //增加书籍
-    void insertBook(Book book);
+    int insertBook(Book book);
 
     //根据id删除书籍
-    void deleteBookByid(long id);
+    int deleteBookByid(long id);
 
     //更新书籍
-    void updateBook(Book book);
+    int updateBook(Book book);
 
     //查询所有书籍
     List<Book> selectAllBooks();

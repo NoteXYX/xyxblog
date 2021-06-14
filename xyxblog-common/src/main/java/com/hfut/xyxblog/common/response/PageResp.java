@@ -6,6 +6,7 @@ import java.util.List;
 
 @Data
 public class PageResp {
+
     //数据
     private List<?> data;
 
