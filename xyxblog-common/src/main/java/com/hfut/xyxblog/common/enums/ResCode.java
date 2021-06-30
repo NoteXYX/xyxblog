@@ -1,5 +1,6 @@
 package com.hfut.xyxblog.common.enums;
 
+//响应状态枚举
 public enum ResCode {
 
     ERROR(400, "异常"),

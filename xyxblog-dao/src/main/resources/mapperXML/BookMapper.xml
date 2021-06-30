@@ -9,8 +9,8 @@
 
     <!--  增加书籍信息  -->
     <insert id="insertBook" parameterType="com.hfut.xyxblog.dao.Entity.Book" useGeneratedKeys="true" keyProperty="id">
-        insert into book (title, abs, cover, author, cid, press_date, press, update_id, update_datetime)
-        value (#{title}, #{abs}, #{cover}, #{author}, #{cid}, #{pressDate}, #{press}, #{updateId}, #{updateDatetime})
+        insert into book (title, author, press_date, press, cover, abs, cid, update_id)
+        value (#{title}, #{author}, #{pressDate}, #{press}, #{cover}, #{abs}, #{cid}, #{updateId})
     </insert>
 
     <!--  删除书籍信息   -->
@@ -20,8 +20,8 @@
 
     <!--  修改书籍信息  -->
     <update id="updateBook" parameterType="com.hfut.xyxblog.dao.Entity.Book">
-        update book set title=#{title}, abs=#{abs}, cover=#{cover}, author=#{author}, cid=#{cid},
-        press_date=#{pressDate}, press=#{press}, update_id=#{updateId}, update_datetime=#{updateDatetime}
+        update book set title=#{title}, author=#{author}, press_date=#{pressDate}, press=#{press},
+        cover=#{cover}, abs=#{abs}, cid=#{cid}, update_id=#{updateId}
         where id=#{id}
     </update>
 
@@ -39,6 +39,5 @@
             </if>
         </where>
     </select>
-
 
 </mapper>

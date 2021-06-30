@@ -47,18 +47,20 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public int insertBook(Book book) {
-        return bookDao.insertBook(book);
+    public int insertOrUpdateBook(Book book) {
+//        if (Objects.nonNull(book.getPressDate())) {     //改变时间格式
+//
+//        }
+        if (Objects.isNull(book.getId())) {    //新增书籍
+            return bookDao.insertBook(book);
+        } else {    //修改书籍
+            return bookDao.updateBook(book);
+        }
     }
 
     @Override
     public int deleteBookById(long id) {
         return bookDao.deleteBookByid(id);
-    }
-
-    @Override
-    public int updateBook(Book book) {
-        return bookDao.updateBook(book);
     }
 
     @Override

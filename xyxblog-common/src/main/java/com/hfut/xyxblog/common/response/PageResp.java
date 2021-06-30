@@ -15,4 +15,6 @@ public class PageResp {
 
     //总页数
     private int totalPageNum;
+
+    private CommonResp commonResp;
 }

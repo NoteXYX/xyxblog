@@ -10,13 +10,13 @@ server:
   port: 8081
 spring:
   profiles: dev
-  datasource:
-    url: jdbc:mysql://127.0.0.1:3306/xyxblog?serverTimezone=UTC&characterEncoding=utf-8&useSSL=false
+  datasource: # 数据源
+    url: jdbc:mysql://127.0.0.1:3306/xyxblog?serverTimezone=Asia/Shanghai&characterEncoding=utf-8&useSSL=false
     username: root
     password:
     type: com.alibaba.druid.pool.DruidDataSource
     driver-class-name: com.mysql.cj.jdbc.Driver
-  quartz:
+  quartz: # 定时任务
     job-store-type: memory # Job 存储器类型。默认为 memory 表示内存，可选 jdbc 使用数据库。
     auto-startup: true # Quartz 是否自动启动
     startup-delay: 0 # 延迟 N 秒启动
@@ -48,6 +48,8 @@ logging:
   #file 指定输出文件的存储路径
   file:
     name: logs/app.log
+myFiles:
+  imagePath: /files/images/
 
 ---
 server:

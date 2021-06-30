@@ -17,13 +17,13 @@ import org.springframework.web.util.HtmlUtils;
 public class LoginController {
 
     @Autowired
-    LoginService loginService;
+    private LoginService loginService;
 
     @Autowired
-    CornTestServiceImpl cornTestService;
+    private CornTestServiceImpl cornTestService;
 
     @Autowired
-    Scheduler scheduler;
+    private Scheduler scheduler;
 
     @CrossOrigin
     @PostMapping(value = "/login")
